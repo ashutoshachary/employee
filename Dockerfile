@@ -2,13 +2,11 @@
 FROM eclipse-temurin:17-jdk
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /tmp
 
 # Copy the application JAR file to the container
-COPY target/employeetesting-0.0.1-SNAPSHOT.jar app.jar
-
-# Set environment variables from a .env file
-ENV SPRING_PROFILES_ACTIVE=prod
+COPY target/*.jar app.jar
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+EXPOSE 8083
